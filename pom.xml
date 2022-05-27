@@ -7,6 +7,8 @@
     <modules>
         <module>commerce-common</module>
         <module>commerce-mvc-config</module>
+        <module>commerce-notes</module>
+        <module>commerce-nacos-client</module>
     </modules>
 
     <parent>
