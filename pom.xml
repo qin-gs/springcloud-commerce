@@ -9,6 +9,7 @@
         <module>commerce-mvc-config</module>
         <module>commerce-notes</module>
         <module>commerce-nacos-client</module>
+        <module>commerce-admin</module>
     </modules>
 
     <parent>
@@ -99,5 +100,21 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>${artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

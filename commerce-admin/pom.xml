@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>commerce-nacos-client</artifactId>
+    <artifactId>commerce-admin</artifactId>
+    <description>监控服务器</description>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -20,6 +21,11 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <version>2.2.0</version>
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
