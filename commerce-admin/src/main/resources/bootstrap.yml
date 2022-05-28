@@ -6,6 +6,10 @@ server:
 spring:
   application:
     name: commerce-admin
+  security:
+    user:
+      name: username
+      password: password
   cloud:
     nacos:
       discovery:
@@ -15,6 +19,8 @@ spring:
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator
+          user.name: username # 这里写 ${spring.security.user.name} 会报错 (自己无法注册)
+          user.password: password
   thymeleaf:
     check-template: false
     check-template-location: false
