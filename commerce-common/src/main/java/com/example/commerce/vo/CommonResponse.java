@@ -1,4 +1,4 @@
-package com.commerce.vo;
+package com.example.commerce.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

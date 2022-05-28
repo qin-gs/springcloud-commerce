@@ -1,7 +1,7 @@
-package com.commerce.advice;
+package com.example.commerce.advice;
 
 import cn.hutool.http.server.HttpServerRequest;
-import com.commerce.vo.CommonResponse;
+import com.example.commerce.vo.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

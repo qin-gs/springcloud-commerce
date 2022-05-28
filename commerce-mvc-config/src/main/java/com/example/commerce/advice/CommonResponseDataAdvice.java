@@ -1,7 +1,7 @@
-package com.commerce.advice;
+package com.example.commerce.advice;
 
-import com.commerce.annotation.IgnoreResponseAdvice;
-import com.commerce.vo.CommonResponse;
+import com.example.commerce.annotation.IgnoreResponseAdvice;
+import com.example.commerce.vo.CommonResponse;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;

@@ -1,4 +1,4 @@
-package com.commerce.annotation;
+package com.example.commerce.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
