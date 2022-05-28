@@ -25,6 +25,14 @@ spring:
     check-template: false
     check-template-location: false
 
+#  # 被监控应用状态变更为 down, offline, unknown 是，会自动告警：实例的状态，原因，实例地址等
+#  boot:
+#    admin:
+#      notify:
+#        mail:
+#          from: ${spring.mail.username}
+#          to:3210968849@qq.com
+
 # 暴露端点
 management:
   endpoints:

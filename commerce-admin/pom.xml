@@ -39,6 +39,11 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+        <!-- 自定义预警-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
