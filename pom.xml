@@ -10,6 +10,7 @@
         <module>commerce-notes</module>
         <module>commerce-nacos-client</module>
         <module>commerce-admin</module>
+        <module>commerce-authority-center</module>
     </modules>
 
     <parent>

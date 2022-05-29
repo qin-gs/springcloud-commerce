@@ -1,0 +1,20 @@
+
+### 获取 token
+POST http://localhost:7000/commerce-authority-center/authority/token
+Content-Type: application/json
+
+{
+  "username": "qqq",
+  "password": "5aa765d61d8327de"
+}
+
+
+### 注册用户
+POST http://localhost:7000/commerce-authority-center/authority/register
+Content-Type: application/json
+
+{
+  "username": "www",
+  "password": "password"
+}
+
