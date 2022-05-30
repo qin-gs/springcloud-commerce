@@ -11,6 +11,7 @@
         <module>commerce-nacos-client</module>
         <module>commerce-admin</module>
         <module>commerce-authority-center</module>
+        <module>commerce-gateway</module>
     </modules>
 
     <parent>
@@ -102,7 +103,7 @@
     </dependencies>
 
     <build>
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
