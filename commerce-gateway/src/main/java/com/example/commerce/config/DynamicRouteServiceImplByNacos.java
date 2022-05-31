@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -54,7 +55,7 @@ public class DynamicRouteServiceImplByNacos {
             List<RouteDefinition> routeDefinitions = MAPPER.readValue(config, new TypeReference<List<RouteDefinition>>() {
             });
 
-            if (!routeDefinitions.isEmpty()) {
+            if (!CollectionUtils.isEmpty(routeDefinitions)) {
                 routeDefinitions.forEach(routeDefinition -> {
                     log.info("init gateway nacos route definition {}", routeDefinition);
                     dynamicRouteService.addRouteDefinition(routeDefinition);
