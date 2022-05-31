@@ -8,6 +8,7 @@ import org.springframework.cloud.gateway.route.RouteDefinitionWriter;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -18,7 +19,6 @@ import java.util.List;
  */
 @Slf4j
 @Service
-@SuppressWarnings("all")
 public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
     /**
      * 写路由定义
@@ -64,16 +64,14 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
     public String updateList(List<RouteDefinition> definitions) {
         log.info("gateway update route list: {}", definitions);
         List<RouteDefinition> routeDefinitions = this.routeDefinitionLocator.getRouteDefinitions().buffer().blockFirst();
-        if (routeDefinitions.isEmpty()) {
+        if (!CollectionUtils.isEmpty(routeDefinitions)) {
             // 清除之前所有的路由配置
             routeDefinitions.forEach(routeDefinition -> {
                 this.deleteById(routeDefinition.getId());
             });
         }
         // 更新路由定义同步到 gateway
-        definitions.forEach(routeDefinition -> {
-            this.addRouteDefinition(routeDefinition);
-        });
+        definitions.forEach(this::addRouteDefinition);
         return "success";
     }
 

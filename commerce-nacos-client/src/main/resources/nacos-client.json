@@ -1,0 +1,25 @@
+[
+  {
+    "id": "commerce-nacos-client",
+    "predicates": [
+      {
+        "args": {
+          "pattern": "/imooc/commerce-nacos-client/**"
+        },
+        "name": "Path"
+      }
+    ],
+    "uri": "lb://commerce-nacos-client",
+    "filters": [
+      {
+        "name": "HeaderToken"
+      },
+      {
+        "name": "StripPrefix",
+        "args": {
+          "pattern": "1"
+        }
+      }
+    ]
+  }
+]

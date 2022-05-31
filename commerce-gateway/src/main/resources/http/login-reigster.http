@@ -1,0 +1,19 @@
+
+### 登录
+POST http://localhost:9001/imooc/commerce/login
+Content-Type: application/json
+
+{
+  "username": "qqq",
+  "password": "password"
+}
+
+
+### 注册
+POST http://localhost:9001/imooc/commerce/register
+Content-Type: application/json
+
+{
+  "username": "eee",
+  "password": "password"
+}
