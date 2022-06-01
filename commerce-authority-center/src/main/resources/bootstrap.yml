@@ -38,6 +38,20 @@ spring:
       max-lifetime: 1800000
       auto-commit: true
       pool-name: CommerceHikariPool
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    producer:
+      retries: 3
+    consumer:
+      auto-offset-reset: latest
+  zipkin:
+    sender:
+      type: kafka
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0 # 采样率
+      rate: 100 # 抽样策略 (优先级更高)
 
 # 暴露端点
 management:
