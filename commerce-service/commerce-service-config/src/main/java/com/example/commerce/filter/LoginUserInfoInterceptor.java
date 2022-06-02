@@ -65,8 +65,8 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 
         // 清理用户信息
-        if (AccessContext.getLoginUserInfo() == null) {
-            AccessContext.clear();
+        if (AccessContext.getLoginUserInfo() != null) {
+            AccessContext.clearLoginUserInfo();
         }
     }
 }

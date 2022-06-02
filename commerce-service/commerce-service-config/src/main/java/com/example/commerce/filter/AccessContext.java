@@ -17,7 +17,7 @@ public class AccessContext {
         loginUserInfos.set(loginUserInfo);
     }
 
-    public static void clear() {
+    public static void clearLoginUserInfo() {
         loginUserInfos.remove();
     }
 }

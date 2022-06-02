@@ -35,7 +35,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("microservice")
                 .description("springcloud-service")
-                .contact(new Contact("qqq", "http://example.com", "example@qq.com"))
+                .contact(new Contact("qgs", "http://example.com", "example@qq.com"))
                 .version("1.0")
                 .build();
     }

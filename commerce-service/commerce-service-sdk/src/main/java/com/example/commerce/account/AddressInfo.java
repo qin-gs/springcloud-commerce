@@ -12,6 +12,7 @@ import java.util.List;
  */
 @Setter
 @Getter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -26,6 +27,7 @@ public class AddressInfo {
 
     @Setter
     @Getter
+    @ToString
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder

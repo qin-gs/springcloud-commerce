@@ -1,5 +1,6 @@
 package com.example.commerce.account;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
@@ -12,6 +13,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel("用户账户余额信息")
 public class BalanceInfo {
 
     @ApiModelProperty("用户主键")

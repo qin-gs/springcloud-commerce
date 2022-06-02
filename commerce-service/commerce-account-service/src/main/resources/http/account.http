@@ -1,0 +1,39 @@
+
+### 创建用户地址
+POST http://localhost:9001/imooc/commerce-account-service/address/create-address
+Content-Type: application/json # 发送的数据类型
+commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJjb21tZXJjZS11c2VyIjoie1wiaWRcIjoxMCxcInVzZXJuYW1lXCI6XCJxcXFcIn0iLCJqdGkiOiJhZGJjZmUxMi1mOWRlLTRkYzYtYTY2MC0xZTY1ODFkZWFlNWQiLCJleHAiOjE2NTQxODU2MDB9.IxhRjLKUIQzNQJiWXcdOnNJYePwwX2sa4YL1ZjwDx4a6rLp0RYkup6t4tZxTQoQNxsbpFxnjyGHdk9p9pSfVeLjBcz-Ixmw12O4k3bON9OF0uLnR1UoSqXT1EVesCJeEP2lPJ1p4J8zOXC2kL1c9FpLVsAe-ZP9JfCfTClGY8T-FHAALVZ5lmlPW_agUlSVUWy4GfBK2a1bnC2DYHMv1ofVI_B2T3kOyb7Iv7Gd-WZflxOT3zSrWCuGdjcDaa9CWmue1MUjua6tVLDBOC9V5VvRhxwN--BuGwGGDSXhyOOIh2FfcbUfxikkorY8-6YdUkk4jKV9bfL1flz7PbDyvWg
+
+{
+  "userId": 10,
+  "addressItems": [
+    {
+      "username": "qqq",
+      "phone": "12345678901",
+      "province": "山东省",
+      "city": "济南市",
+      "addressDetail": "高新区"
+    }
+  ]
+}
+
+### 获取当前用户的地址信息
+GET http://localhost:9001/imooc/commerce-account-service/address/current-address
+Accept: application/json # 返回值类型
+commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJjb21tZXJjZS11c2VyIjoie1wiaWRcIjoxMCxcInVzZXJuYW1lXCI6XCJxcXFcIn0iLCJqdGkiOiJhZGJjZmUxMi1mOWRlLTRkYzYtYTY2MC0xZTY1ODFkZWFlNWQiLCJleHAiOjE2NTQxODU2MDB9.IxhRjLKUIQzNQJiWXcdOnNJYePwwX2sa4YL1ZjwDx4a6rLp0RYkup6t4tZxTQoQNxsbpFxnjyGHdk9p9pSfVeLjBcz-Ixmw12O4k3bON9OF0uLnR1UoSqXT1EVesCJeEP2lPJ1p4J8zOXC2kL1c9FpLVsAe-ZP9JfCfTClGY8T-FHAALVZ5lmlPW_agUlSVUWy4GfBK2a1bnC2DYHMv1ofVI_B2T3kOyb7Iv7Gd-WZflxOT3zSrWCuGdjcDaa9CWmue1MUjua6tVLDBOC9V5VvRhxwN--BuGwGGDSXhyOOIh2FfcbUfxikkorY8-6YdUkk4jKV9bfL1flz7PbDyvWg
+
+
+### 获取用户地址信息
+POST http://localhost:9001/imooc/commerce-account-service/address/address-info-by-table-id
+Content-Type: application/json # 发送的数据类型
+commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJjb21tZXJjZS11c2VyIjoie1wiaWRcIjoxMCxcInVzZXJuYW1lXCI6XCJxcXFcIn0iLCJqdGkiOiJhZGJjZmUxMi1mOWRlLTRkYzYtYTY2MC0xZTY1ODFkZWFlNWQiLCJleHAiOjE2NTQxODU2MDB9.IxhRjLKUIQzNQJiWXcdOnNJYePwwX2sa4YL1ZjwDx4a6rLp0RYkup6t4tZxTQoQNxsbpFxnjyGHdk9p9pSfVeLjBcz-Ixmw12O4k3bON9OF0uLnR1UoSqXT1EVesCJeEP2lPJ1p4J8zOXC2kL1c9FpLVsAe-ZP9JfCfTClGY8T-FHAALVZ5lmlPW_agUlSVUWy4GfBK2a1bnC2DYHMv1ofVI_B2T3kOyb7Iv7Gd-WZflxOT3zSrWCuGdjcDaa9CWmue1MUjua6tVLDBOC9V5VvRhxwN--BuGwGGDSXhyOOIh2FfcbUfxikkorY8-6YdUkk4jKV9bfL1flz7PbDyvWg
+
+{
+  "ids": [
+    {
+      "id": "1"
+    }
+  ]
+}
+
+

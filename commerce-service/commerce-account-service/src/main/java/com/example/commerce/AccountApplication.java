@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
  * 用户账户微服务
- * <a href="http://localhost:8080/commerce-account-service/doc.html">swagger 文档</a>
+ * <a href="http://localhost:8003/commerce-account-service/doc.html">swagger 文档</a>
  */
 @SpringBootApplication
 @EnableDiscoveryClient

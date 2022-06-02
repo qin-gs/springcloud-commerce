@@ -16,7 +16,7 @@ spring:
           management:
             context-path: ${server.servlet.context-path}/actuator
   kafka:
-    bootstrap-servers: 127.0.0.1:9002
+    bootstrap-servers: 127.0.0.1:9092
     producer:
       retries: 3
     consumer:
@@ -37,7 +37,7 @@ spring:
         format_sql: true
     open-in-view: false
   data-source:
-    url: jdbc:mysql://127.0.0.1:3306/commerce?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/commerce?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver

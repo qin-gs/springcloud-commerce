@@ -30,3 +30,5 @@ CREATE TABLE IF NOT EXISTS `commerce`.`t_ecommerce_balance`
   AUTO_INCREMENT = 10
   DEFAULT CHARSET = utf8 COMMENT ='用户账户余额表';
 
+truncate t_ecommerce_address;
+truncate t_ecommerce_balance;
