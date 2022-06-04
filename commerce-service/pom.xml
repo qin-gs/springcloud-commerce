@@ -20,6 +20,7 @@
         <module>commerce-service-config</module>
         <module>commerce-account-service</module>
         <module>commerce-service-sdk</module>
+        <module>commerce-goods-service</module>
     </modules>
 
     <properties>

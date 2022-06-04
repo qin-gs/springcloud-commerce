@@ -1,7 +1,7 @@
 package com.example.commerce.service;
 
 import com.example.commerce.account.AddressInfo;
-import com.example.commerce.account.TableId;
+import com.example.commerce.common.TableId;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

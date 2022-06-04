@@ -1,7 +1,7 @@
 package com.example.commerce.service.impl;
 
 import com.example.commerce.account.AddressInfo;
-import com.example.commerce.account.TableId;
+import com.example.commerce.common.TableId;
 import com.example.commerce.dao.CommerceAddressDao;
 import com.example.commerce.entity.CommerceAddress;
 import com.example.commerce.filter.AccessContext;

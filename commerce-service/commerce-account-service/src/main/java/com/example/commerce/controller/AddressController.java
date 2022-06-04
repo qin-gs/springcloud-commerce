@@ -1,7 +1,7 @@
 package com.example.commerce.controller;
 
 import com.example.commerce.account.AddressInfo;
-import com.example.commerce.account.TableId;
+import com.example.commerce.common.TableId;
 import com.example.commerce.service.IAddressService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -1,7 +1,7 @@
 package com.example.commerce.service;
 
 import com.example.commerce.account.AddressInfo;
-import com.example.commerce.account.TableId;
+import com.example.commerce.common.TableId;
 
 /**
  * 用户地址相关服务接口
