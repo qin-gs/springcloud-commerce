@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
  * 商品服务入口
+ * mysql, redis, nacos, kafka, zipkin
  */
 @SpringBootApplication
 @EnableDiscoveryClient

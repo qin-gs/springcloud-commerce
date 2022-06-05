@@ -130,7 +130,7 @@ public class CommerceGoods {
                     .goodsStatus(GoodsStatus.ONLINE)
                     .price(goodsInfo.getPrice())
                     .supply(goodsInfo.getSupply())
-                    .inventory(goodsInfo.getInventory())
+                    .inventory(goodsInfo.getSupply())
                     .goodsProperty(MAPPER.writeValueAsString(goodsInfo.getGoodsProperty()))
                     .build();
         } catch (JsonProcessingException e) {

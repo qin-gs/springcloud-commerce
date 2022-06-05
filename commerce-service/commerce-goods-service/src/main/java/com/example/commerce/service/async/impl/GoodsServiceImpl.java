@@ -23,6 +23,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -127,6 +129,40 @@ public class GoodsServiceImpl implements IGoodsService {
 
     @Override
     public boolean deductGoodsInventory(List<DeductGoodsInventory> deductGoodsInventories) {
-        return false;
+
+        deductGoodsInventories.forEach(good -> {
+            if (good.getCount() <= 0) {
+                throw new RuntimeException("商品数量不能小于等于0");
+            }
+        });
+        List<CommerceGoods> commerceGoods = IterableUtils.toList(commerceGoodsDao.findAllById(
+                deductGoodsInventories.stream()
+                        .map(DeductGoodsInventory::getGoodsId)
+                        .collect(toList())
+        ));
+        if (CollectionUtils.isEmpty(commerceGoods)) {
+            throw new RuntimeException("商品不存在");
+        }
+        if (commerceGoods.size() != deductGoodsInventories.size()) {
+            log.error("商品数量不正确，查询出来的数量: {}， 传递的数量: {}", commerceGoods.size(), deductGoodsInventories.size());
+            throw new RuntimeException("商品数量不正确");
+        }
+        Map<Long, DeductGoodsInventory> goodsInventoryMap = deductGoodsInventories.stream()
+                .collect(Collectors.toMap(DeductGoodsInventory::getGoodsId, Function.identity()));
+
+        commerceGoods.forEach(good -> {
+            Long curr = good.getInventory();
+            Long less = goodsInventoryMap.get(good.getId()).getCount();
+            if (curr < less) {
+                log.error("商品库存不足，商品id: {}, 当前库存: {}, 减少的库存: {}", good.getId(), curr, less);
+                throw new RuntimeException("商品库存不足");
+            }
+            good.setInventory(curr - less);
+            log.info("商品库存减少，商品id: {}, 当前库存: {}, 减少的库存: {}", good.getId(), curr, less);
+        });
+        commerceGoodsDao.saveAll(commerceGoods);
+        log.info("商品库存减少成功");
+
+        return true;
     }
 }
