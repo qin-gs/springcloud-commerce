@@ -34,6 +34,21 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
+# feign 相关配置
+feign:
+  # 开启 gzip 压缩
+  compression:
+    request:
+      enabled: true
+      mime-types: text/html, application/json, application/xml
+      min-request-size: 1024
+    response:
+      enabled: true
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+
 # 暴露端点
 management:
   endpoints:
