@@ -1,4 +1,4 @@
-package com.example.commerce.service.async.impl;
+package com.example.commerce.service.impl;
 
 import com.example.commerce.common.TableId;
 import com.example.commerce.constant.GoodsConstant;
@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.IterableUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -33,13 +34,14 @@ import static java.util.stream.Collectors.toList;
 @Transactional(rollbackFor = Exception.class)
 public class GoodsServiceImpl implements IGoodsService {
 
-    public static final ObjectMapper MAPPER = new ObjectMapper();
+    private final ObjectMapper MAPPER;
     private final StringRedisTemplate redisTemplate;
     private final CommerceGoodsDao commerceGoodsDao;
 
-    public GoodsServiceImpl(StringRedisTemplate redisTemplate, CommerceGoodsDao commerceGoodsDao) {
+    public GoodsServiceImpl(StringRedisTemplate redisTemplate, CommerceGoodsDao commerceGoodsDao, ObjectMapper MAPPER) {
         this.redisTemplate = redisTemplate;
         this.commerceGoodsDao = commerceGoodsDao;
+        this.MAPPER = MAPPER;
     }
 
     @Override
@@ -68,7 +70,8 @@ public class GoodsServiceImpl implements IGoodsService {
     public List<SimpleGoodsInfo> getSimpleGoodsInfoByTableId(TableId tableId) {
         // 获取商品的简单信息，如果 redis 中查不到，去数据库中查
         List<Object> goodsIds = tableId.getIds().stream().map(id -> id.getId().toString()).collect(toList());
-        List<Object> cachedSimpleGoodsInfos = redisTemplate.opsForHash().multiGet(GoodsConstant.COMMERCE_GOODS_DICT_KEY, goodsIds);
+        List<Object> cachedSimpleGoodsInfos = redisTemplate.opsForHash().multiGet(GoodsConstant.COMMERCE_GOODS_DICT_KEY, goodsIds)
+                .stream().filter(Objects::nonNull).collect(toList());
 
         // 如果 redis 中查到了，直接返回
         if (CollectionUtils.isNotEmpty(cachedSimpleGoodsInfos)) {
@@ -83,12 +86,14 @@ public class GoodsServiceImpl implements IGoodsService {
                         goodsIds.stream().map(o -> Long.valueOf(o.toString())).collect(toList()),
                         fromCache.stream().map(SimpleGoodsInfo::getId).collect(toList())
                 );
+                log.info("部分从数据库中获取: {}", fromDbIds);
                 List<SimpleGoodsInfo> fromDb = queryGoodsFromDbAndCacheToRedis(new TableId(fromDbIds.stream().map(TableId.Id::new).collect(toList())));
 
                 return new ArrayList<>(CollectionUtils.union(fromCache, fromDb));
             }
         } else {
             // redis 没查到，去数据库中查
+            log.info("全部从数据库中获取: {}", goodsIds);
             return queryGoodsFromDbAndCacheToRedis(tableId);
         }
     }
@@ -107,13 +112,13 @@ public class GoodsServiceImpl implements IGoodsService {
     /**
      * 从数据库表查询，保存到 redis
      */
-    private List<com.example.commerce.goods.SimpleGoodsInfo> queryGoodsFromDbAndCacheToRedis(TableId tableId) {
+    private List<SimpleGoodsInfo> queryGoodsFromDbAndCacheToRedis(TableId tableId) {
         List<Long> ids = tableId.getIds().stream().map(TableId.Id::getId).collect(toList());
         log.info("从数据库查到的详细商品信息 ids: {}", ids);
 
         // 将结果缓存
         List<CommerceGoods> commerceGoods = IterableUtils.toList(commerceGoodsDao.findAllById(ids));
-        List<com.example.commerce.goods.SimpleGoodsInfo> simpleGoodsInfos = commerceGoods.stream().map(CommerceGoods::toSimple).collect(toList());
+        List<SimpleGoodsInfo> simpleGoodsInfos = commerceGoods.stream().map(CommerceGoods::toSimple).collect(toList());
 
         Map<String, String> id2JsonObject = new HashMap<>(simpleGoodsInfos.size());
         simpleGoodsInfos.forEach(simpleGoodsInfo -> {
