@@ -1,0 +1,16 @@
+
+### annotation 根据 serviceId 获取服务实例信息
+GET http://localhost:8000/commerce-nacos-client/hystrix/annotation-nacos-info?serviceId=commerce-nacos-client
+Content-Type: application/json
+
+
+### code nacos
+GET http://localhost:8000/commerce-nacos-client/hystrix/code-nacos-info?serviceId=commerce-nacos-client
+Content-Type: application/json
+
+### hystrix-observable-command
+GET http://localhost:8000/commerce-nacos-client/hystrix/hystrix-observable-command?serviceId=commerce-nacos-client
+Content-Type: application/json
+
+
+
