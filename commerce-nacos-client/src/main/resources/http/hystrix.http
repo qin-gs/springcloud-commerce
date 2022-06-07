@@ -12,5 +12,31 @@ Content-Type: application/json
 GET http://localhost:8000/commerce-nacos-client/hystrix/hystrix-observable-command?serviceId=commerce-nacos-client
 Content-Type: application/json
 
+### cache-hystrix
+GET http://localhost:8000/commerce-nacos-client/hystrix/cache-hystrix-command?serviceId=commerce-nacos-client
+Content-Type: application/json
+
+
+### cache-anno1-hystrix
+GET http://localhost:8000/commerce-nacos-client/hystrix/cache-anno-1?serviceId=commerce-nacos-client
+Content-Type: application/json
+
+### cache-anno2-hystrix
+GET http://localhost:8000/commerce-nacos-client/hystrix/cache-anno-2?serviceId=commerce-nacos-client
+Content-Type: application/json
+
+### cache-anno3-hystrix
+GET http://localhost:8000/commerce-nacos-client/hystrix/cache-anno-3?serviceId=commerce-nacos-client
+Content-Type: application/json
+
+### merge-code
+GET http://localhost:8000/commerce-nacos-client/hystrix/request-merge-code
+Content-Type: application/json
+
+### merge-anno
+GET http://localhost:8000/commerce-nacos-client/hystrix/request-merge-anno
+Content-Type: application/json
+
+
 
 

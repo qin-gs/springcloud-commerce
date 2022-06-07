@@ -1,5 +1,7 @@
 package com.example.commerce.service.communication;
 
+import com.example.commerce.service.communication.hystrix.AuthorityFeignClientFallbackFactory;
+import com.example.commerce.service.communication.hystrix.AuthorityFeignClientImpl;
 import com.example.commerce.vo.JwtToken;
 import com.example.commerce.vo.UsernameAndPassword;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -9,9 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * 与 authority 通信的接口
+ * 与 authority 通信的接口；
+ * 使用后备策略
  */
-@FeignClient(value = "commerce-authority-center", contextId = "AuthorityFeignClient")
+@FeignClient(value = "commerce-authority-center",
+        contextId = "AuthorityFeignClient",
+        // fallback = AuthorityFeignClientImpl.class,
+        fallbackFactory = AuthorityFeignClientFallbackFactory.class)
 public interface AuthorityFeignClient {
 
     /**

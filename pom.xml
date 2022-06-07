@@ -13,6 +13,7 @@
         <module>commerce-authority-center</module>
         <module>commerce-gateway</module>
         <module>commerce-service</module>
+        <module>commerce-hystrix-dashboard</module>
     </modules>
 
     <parent>

@@ -48,6 +48,9 @@ feign:
     enabled: false
   okhttp:
     enabled: true
+  # openfeign 集成 hystrix
+  hystrix:
+    enabled: true
 
 # 暴露端点
 management:
