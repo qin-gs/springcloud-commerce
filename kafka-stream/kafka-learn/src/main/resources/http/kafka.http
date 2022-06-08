@@ -1,0 +1,13 @@
+
+### kafka-send
+GET http://localhost:8001/kafka-learn-dev/kafka/send-message?key=k&topic=kafka-springboot-topic
+Content-Type: application/json
+
+
+### kafka-send-nokey
+GET http://localhost:8001/kafka-learn-dev/kafka/send-message?topic=kafka-springboot-topic
+Content-Type: application/json
+
+
+
+

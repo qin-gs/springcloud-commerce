@@ -1,7 +1,6 @@
 package com.example.commerce.service.communication;
 
 import com.example.commerce.service.communication.hystrix.AuthorityFeignClientFallbackFactory;
-import com.example.commerce.service.communication.hystrix.AuthorityFeignClientImpl;
 import com.example.commerce.vo.JwtToken;
 import com.example.commerce.vo.UsernameAndPassword;
 import org.springframework.cloud.openfeign.FeignClient;

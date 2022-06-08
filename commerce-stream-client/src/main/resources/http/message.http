@@ -1,0 +1,10 @@
+
+### default-send
+GET http://localhost:8006/commerce-stream-client/message/default
+Content-Type: application/json
+
+### my-send
+GET http://localhost:8006/commerce-stream-client/message/my
+Content-Type: application/json
+
+

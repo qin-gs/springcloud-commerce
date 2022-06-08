@@ -8,9 +8,7 @@ import com.netflix.hystrix.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,6 +24,7 @@ public class NacosClientCollapseCommand extends HystrixCollapser<List<List<Servi
     public NacosClientCollapseCommand(NacosClientService nacosClientService, String serviceId) {
         super(
                 HystrixCollapser.Setter.withCollapserKey(HystrixCollapserKey.Factory.asKey("NacosClientCollapseCommand"))
+                        // 200ms 内的请求进行合并
                         .andCollapserPropertiesDefaults(HystrixCollapserProperties.Setter().withTimerDelayInMilliseconds(200))
         );
         this.nacosClientService = nacosClientService;

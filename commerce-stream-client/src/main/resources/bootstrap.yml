@@ -1,0 +1,78 @@
+server:
+  port: 8006
+  servlet:
+    context-path: /commerce-stream-client
+
+spring:
+  application:
+    name: commerce-stream-client
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+        namespace: f5e0fd51-0f99-4c47-a173-ba46d3f269e4
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+    stream:
+      kafka:
+        binder:
+          brokers: 127.0.0.1:9092 # kafka 地址
+          auto-create-topics: true # 自动创建 topic
+      # 开启分区支持
+      instanceCount: 1 # 消费者实例数
+      instanceIndex: 0 # 消费者实例索引
+      bindings:
+        # 默认发送方
+        output:
+          destination: commerce-stream-client-default # 消息发送的目的地
+          content-type: text/plain
+          # 消息分区
+          producer:
+            # partitionKeyExpression: payload.author # 分区关键字
+            # 自定义分区策略
+            partitionKeyExtractorName: myPartitionKeyExtractorName # 处理复杂的 key 提取策略
+            partitionSelectorName: myPartitionSelectorMame # 选择分区
+            partitionCount: 1 # 分区大小
+        # 默认接收方
+        input:
+          destination: commerce-stream-client-default
+          # 消息分组
+          group: commerce-stream-client-default
+          # 开启分区支持
+          consumer:
+            partitioned: true
+        # 自定义信道
+        myInput:
+          destination: commerce-stream-client-my
+          content-type: text/plain
+        myOutput:
+          destination: commerce-stream-client-my
+          group: commerce-stream-client-my
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    producer:
+      retries: 3
+    consumer:
+      auto-offset-reset: latest
+  sleuth:
+    sampler:
+      probability: 1.0
+      rate: 100
+  zipkin:
+    sender:
+      type: kafka
+    base-url: http://localhost:9411
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' # 需要开发的端点，默认只打开 health, info
+  endpoint:
+    health:
+      show-details: always
+
+

@@ -1,4 +1,4 @@
-package com.example.commerce.service.hystrix;
+package com.example.commerce.service.hystrix.cache;
 
 import com.example.commerce.service.NacosClientService;
 import com.netflix.hystrix.*;
