@@ -17,7 +17,7 @@ public class DeductGoodsInventory {
     private Long goodsId;
 
     @ApiModelProperty("扣减数量")
-    private Long count;
+    private Integer count;
 }
 
 

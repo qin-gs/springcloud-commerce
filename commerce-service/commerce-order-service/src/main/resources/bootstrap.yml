@@ -1,11 +1,13 @@
 server:
-  port: 8001
+  port: 8002
   servlet:
-    context-path: /commerce-goods-service
+    context-path: commerce-order-service
 
 spring:
   application:
     name: commerce-goods-service
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     nacos:
       discovery:
@@ -15,6 +17,20 @@ spring:
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator
+    # 消息驱动
+    stream:
+      kafka:
+        binder:
+          brokers: 127.0.0.1:9092
+          auto-create-topics: true
+      bindings:
+        logisticsOutput:
+          destination: commerce-topic
+          content-type: text/plain
+    # 开启 ribbon 重试机制，获取失败后是否从另一个节点获取
+    loadbalancer:
+      retry:
+        enabled: true
     # 事务分组
     alibaba:
       seata:
@@ -56,13 +72,17 @@ spring:
       max-lifetime: 45000
       auto-commit: true
       pool-name: CouponHikariCP
-  redis:
-    database: 0
-    host: 127.0.0.1
-    port: 6379
-    # password:
-    # 连接超时时间
-    timeout: 10000
+
+# feign 相关配置
+feign:
+  # openfeign 集成 hystrix
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
 
 # 暴露端点
 management:

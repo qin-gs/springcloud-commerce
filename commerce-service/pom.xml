@@ -21,6 +21,7 @@
         <module>commerce-account-service</module>
         <module>commerce-service-sdk</module>
         <module>commerce-goods-service</module>
+        <module>commerce-order-service</module>
     </modules>
 
     <properties>

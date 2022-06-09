@@ -157,7 +157,7 @@ public class GoodsServiceImpl implements IGoodsService {
 
         commerceGoods.forEach(good -> {
             Long curr = good.getInventory();
-            Long less = goodsInventoryMap.get(good.getId()).getCount();
+            Integer less = goodsInventoryMap.get(good.getId()).getCount();
             if (curr < less) {
                 log.error("商品库存不足，商品id: {}, 当前库存: {}, 减少的库存: {}", good.getId(), curr, less);
                 throw new RuntimeException("商品库存不足");

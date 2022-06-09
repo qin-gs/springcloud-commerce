@@ -1,5 +1,6 @@
 package com.example.commerce.conf;
 
+import com.alibaba.cloud.seata.web.SeataHandlerInterceptor;
 import com.example.commerce.filter.LoginUserInfoInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -18,6 +19,10 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         registry.addInterceptor(new LoginUserInfoInterceptor())
                 .addPathPatterns("/**")
                 .order(1);
+        // seata 拦截器
+        // seata 传递 xid 事务 is 给其它微服务，其它服务才会写 undo_log，实现回滚
+        registry.addInterceptor(new SeataHandlerInterceptor())
+                .addPathPatterns("/**");
     }
 
     /**

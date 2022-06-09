@@ -49,8 +49,8 @@ public class IGoodsServiceTest {
     @Test
     public void deductGoodsInventory() {
         List<DeductGoodsInventory> deductGoodsInventories = Arrays.asList(
-                new DeductGoodsInventory(10L, 10L),
-                new DeductGoodsInventory(11L, 10L)
+                new DeductGoodsInventory(10L, 10),
+                new DeductGoodsInventory(11L, 10)
         );
         boolean b = service.deductGoodsInventory(deductGoodsInventories);
         System.out.println("b = " + b);

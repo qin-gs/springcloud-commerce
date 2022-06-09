@@ -15,6 +15,10 @@ spring:
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator
+    # 事务分组
+    alibaba:
+      seata:
+        tx-service-group: imooc-commerce
   kafka:
     bootstrap-servers: 127.0.0.1:9092
     producer:
