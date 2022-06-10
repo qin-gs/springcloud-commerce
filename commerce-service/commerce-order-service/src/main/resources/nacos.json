@@ -1,0 +1,20 @@
+{
+  "id": "commerce-order-service",
+  "predicates": [
+    {
+      "args": {
+        "pattern": "/imooc/commerce-order-service/**"
+      },
+      "name": "Path"
+    }
+  ],
+  "uri": "lb://commerce-order-service",
+  "filters": [
+    {
+      "name": "StripPrefix",
+      "args": {
+        "parts": "1"
+      }
+    }
+  ]
+}

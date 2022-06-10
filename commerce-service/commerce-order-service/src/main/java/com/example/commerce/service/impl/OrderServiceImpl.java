@@ -121,9 +121,8 @@ public class OrderServiceImpl implements IOrderService {
         List<SimpleGoodsInfo> goodsInfos = notSecurityGoodsClient.getSimpleGoodsInfoByTableId(
                 new TableId(
                         orderInfo.getOrderItems().stream()
-                                .map(item -> {
-                                    return new TableId.Id(item.getGoodsId());
-                                }).collect(toList())
+                                .map(item -> new TableId.Id(item.getGoodsId()))
+                                .collect(toList())
                 )
         ).getData();
         Map<Long, SimpleGoodsInfo> goodsId2GoodsInfo = goodsInfos.stream()

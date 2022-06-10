@@ -1,0 +1,23 @@
+
+### 创建订单
+POST http://localhost:9001/imooc/commerce-order-service/order/create-order
+Content-Type: application/json
+Accept: application/json
+Commerce-User: eyJhbGciOiJSUzI1NiJ9.eyJjb21tZXJjZS11c2VyIjoie1wiaWRcIjoxMCxcInVzZXJuYW1lXCI6XCJxcXFcIn0iLCJqdGkiOiI2ZGZhMjc2Mi1mODUxLTQxZWEtYWU2My1jODlmYmIwNjg2ZTQiLCJleHAiOjE2NTQ4NzY4MDB9.qtzqzI9jbWHGSz4GnHSguRzDgTbvfZFtB-kwMVBy1FjzdTR4e19wC31rkPeWXeDAyV3ZoRAc5Rdqj846J2At3nGx69W8YnCLk3WDVn4MxywyTBGuMQcbtB96U9ufjd35HWeGbAyC8yqIswhEQ-y_LcMmvu45l5EcLKHPTzt92tNjRZqLp-prwd_ZqXOAAu-DZ5PyVoOfRRg2P6g2XtmB5_cII_jKleDVLzNRi2HSgGcmiuCjk3okSi5-PcAJ-XjFrTAg7uZ4SAu9XUf1LKGUrCxjrzjyQwAjXitcTbe0jEWn0mBH7JnRZdgL8ea5HcIYJJg7_1Ls6zKAzHPkAvxrhQ
+
+{
+  "userAddress": 1,
+  "orderItems": [
+    {
+      "id": 10,
+      "count": 1
+    },
+    {
+      "id": 20,
+      "count": 2
+    }
+  ]
+}
+
+
+### 查询订单
