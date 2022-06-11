@@ -1,0 +1,13 @@
+
+### 根据资源名称限流
+GET http://localhost:8100/commerce-sentinel-client/dashboard/by-resource
+accept: application/json
+
+
+### 根据 url 限流
+GET http://localhost:8100/commerce-sentinel-client/dashboard/by-url
+accept: application/json
+
+
+
+

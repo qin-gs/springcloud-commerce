@@ -15,6 +15,7 @@
         <module>commerce-service</module>
         <module>commerce-hystrix-dashboard</module>
         <module>commerce-stream-client</module>
+        <module>commerce-sentinel-client</module>
     </modules>
 
     <parent>

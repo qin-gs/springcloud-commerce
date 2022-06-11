@@ -1,0 +1,10 @@
+
+### 获取 token
+POST http://localhost:8100/commerce-sentinel-client/sentinel-rest-template/get-token
+Content-Type: application/json
+
+{
+  "username": "qqq",
+  "password": "password"
+}
+

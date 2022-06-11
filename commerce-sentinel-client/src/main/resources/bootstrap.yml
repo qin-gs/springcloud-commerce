@@ -1,0 +1,39 @@
+server:
+  port: 8100
+  servlet:
+    context-path: /commerce-sentinel-client
+
+spring:
+  application:
+    name: commerce-sentinel-client
+  cloud:
+    nacos:
+      # 服务注册发现
+      discovery:
+        enabled: true # 如果不想使用 Nacos 进行服务注册和发现, 设置为 false 即可
+        server-addr: 127.0.0.1:8848
+        # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 # Nacos 集群服务器地址
+        namespace: f5e0fd51-0f99-4c47-a173-ba46d3f269e4
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:7777
+        port: 7777
+      eager: true
+
+# sentinel 开启降级
+resttemplate:
+  sentinel:
+    enabled: true
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

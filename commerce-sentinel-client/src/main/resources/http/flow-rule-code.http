@@ -1,0 +1,6 @@
+
+
+### 硬编码流量控制规则
+GET http://localhost:8100/commerce-sentinel-client/code/flow-rule
+accept: application/json
+
