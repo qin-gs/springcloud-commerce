@@ -22,6 +22,7 @@
         <module>commerce-service-sdk</module>
         <module>commerce-goods-service</module>
         <module>commerce-order-service</module>
+        <module>commerce-logistics-service</module>
     </modules>
 
     <properties>

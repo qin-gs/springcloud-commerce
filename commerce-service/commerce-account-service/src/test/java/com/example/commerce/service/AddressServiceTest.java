@@ -37,13 +37,13 @@ public class AddressServiceTest extends BaseTest {
 
     @Test
     public void getAddressInfoById() {
-        AddressInfo info = service.getAddressInfoById(10L);
+        AddressInfo info = service.getAddressInfoById(1L);
         log.info("根据 id 获取地址：{}", info);
     }
 
     @Test
     public void getAddressByTableId() {
-        AddressInfo info = service.getAddressByTableId(new TableId(Collections.singletonList(new TableId.Id(10L))));
+        AddressInfo info = service.getAddressByTableId(new TableId(Collections.singletonList(new TableId.Id(1L))));
         log.info("根据 table id 获取地址：{}", info);
     }
 }

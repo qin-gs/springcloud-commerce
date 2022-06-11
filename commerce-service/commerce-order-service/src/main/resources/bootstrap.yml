@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: commerce-goods-service
+    name: commerce-order-service
   main:
     allow-bean-definition-overriding: true
   cloud:
@@ -81,8 +81,21 @@ feign:
   client:
     config:
       default:
-        connect-timeout: 5000
-        read-timeout: 5000
+        connect-timeout: 50000
+        read-timeout: 50000
+
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 100000
+        forceClosed: true
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+  shareSecurityContext: true
+
 
 # 暴露端点
 management:
