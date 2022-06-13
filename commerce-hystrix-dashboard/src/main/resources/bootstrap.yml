@@ -18,7 +18,7 @@ spring:
 
 hystrix:
   dashboard:
-    proxy-stream-allow-list: "127.0.0.1"
+    proxy-stream-allow-list: "127.0.0.1,localhost"
 
 # 暴露端点
 management:

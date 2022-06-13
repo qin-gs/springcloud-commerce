@@ -3,6 +3,7 @@ package com.example.commerce.config;
 import com.alibaba.csp.sentinel.adapter.gateway.common.SentinelGatewayConstants;
 import com.alibaba.csp.sentinel.adapter.gateway.common.api.ApiDefinition;
 import com.alibaba.csp.sentinel.adapter.gateway.common.api.ApiPathPredicateItem;
+import com.alibaba.csp.sentinel.adapter.gateway.common.api.GatewayApiDefinitionManager;
 import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayFlowRule;
 import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayRuleManager;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.SentinelGatewayFilter;
@@ -69,7 +70,7 @@ public class SentinelGatewayConfig {
     /**
      * 初始化限流规则
      */
-    @PostConstruct
+    // @PostConstruct
     public void initRule() {
         log.info("初始化限流规则");
         initGatewayRules();
@@ -107,7 +108,7 @@ public class SentinelGatewayConfig {
         GatewayRuleManager.loadRules(rules);
 
         // 加载限流分组
-
+        initCustomizedApis();
     }
 
     /**
@@ -132,15 +133,21 @@ public class SentinelGatewayConfig {
         ApiDefinition api1 = new ApiDefinition("nacos-client-api-1")
                 .setPredicateItems(Collections.singleton(new ApiPathPredicateItem()
                         // 精确匹配
-                        .setPattern("/imooc/commerce-nacos-client/nacos-client/nacos-instance")
-                        .setMatchStrategy(SentinelGatewayConstants.URL_MATCH_STRATEGY_PREFIX)));
+                        .setPattern("/imooc/commerce-nacos-client/nacos-client/service-instance")
+                ));
 
         // 分组 2
         ApiDefinition api2 = new ApiDefinition("nacos-client-api-2")
                 .setPredicateItems(Collections.singleton(new ApiPathPredicateItem()
                         // 精确匹配
-                        .setPattern("/imooc/commerce-nacos-client/nacos-client/nacos-instance")
-                        .setMatchStrategy(SentinelGatewayConstants.URL_MATCH_STRATEGY_PREFIX)));
+                        .setPattern("/imooc/commerce-nacos-client/nacos-client/rest-template")
+                ));
+
+        definitions.add(api1);
+        definitions.add(api2);
+
+        // 加载限流分组
+        GatewayApiDefinitionManager.loadApiDefinitions(definitions);
     }
 
     /**
