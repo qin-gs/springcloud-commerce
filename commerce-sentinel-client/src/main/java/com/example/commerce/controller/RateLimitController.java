@@ -29,7 +29,7 @@ public class RateLimitController {
     }
 
     /**
-     * 在 触点链路 中添加流控规则
+     * 在 簇点链路 中添加流控规则
      */
     @GetMapping("by-url")
     @SentinelResource(value = "byUrl")

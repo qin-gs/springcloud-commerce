@@ -18,7 +18,7 @@ public class RestTemplateExceptionUtil {
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     /**
-     * 限流后的处理方法
+     * 限流后的处理方法 (若本次访问被限流或服务降级，则调用blockHandler指定的接口)
      */
     public static SentinelClientHttpResponse blockHandler(HttpRequest request,
                                                           byte[] body,
@@ -29,7 +29,7 @@ public class RestTemplateExceptionUtil {
     }
 
     /**
-     * 异常降级之后的处理方法
+     * 异常降级之后的处理方法 (若本接口出现未知异常，则调用fallback指定的接口)
      */
     public static SentinelClientHttpResponse fallback(HttpRequest request,
                                                       byte[] body,

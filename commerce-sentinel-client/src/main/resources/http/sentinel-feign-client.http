@@ -1,0 +1,5 @@
+
+### sentinel + feign
+GET http://localhost:8100/commerce-sentinel-service/sentinel-feign/getResultByFeign
+Accept: application/json
+
