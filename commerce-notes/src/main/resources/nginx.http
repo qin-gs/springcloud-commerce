@@ -1,0 +1,21 @@
+
+### nginx -> gateway -> nacos
+POST http://www.commerce.com/imooc/commerce/login
+Content-Type: application/json
+
+{
+  "username": "qqq",
+  "password": "password"
+}
+
+
+### 获取服务
+GET http://www.commerce.com/imooc/commerce-nacos-client/nacos-client/service-instance?serviceId=commerce-gateway
+Accept: application/json
+Commerce-User: eyJhbGciOiJSUzI1NiJ9.eyJjb21tZXJjZS11c2VyIjoie1wiaWRcIjoxMSxcInVzZXJuYW1lXCI6XCJxcXFcIn0iLCJqdGkiOiI3NzVhMmNmNS0zMmIwLTQ2MjAtOGE3Ni1kZjE4MjkxMWIxN2MiLCJleHAiOjE2NTUxMzYwMDB9.Y5PYifOUEQM-dJWL17TMooyvDo3uE2hUZuNBxGmGPpp-4WtByTcuYKGrpqnlB8RA9IpJWM5GP9htliCS-oWkC_QMPFRvGh1i4rkAnKrKHOINfW14hY4xek9uAph6Tvkj6ac9psuvPl34uipU5ahU8Wa9uL8-8imoMxBmmc_I7QLHfPEql2Mx2zmmvNqwDXPCsLSYT97lPhrg8y6-BFkv32O1CP9hDYUrDvp4CVXy1AM68-0yoC9K4zX4_oCZoJf3AO2-BpHlDlScpeuKfSt3rNk4SOmVNMc_T0f-5nGRuR_9bbogOb1AGt1DH5PNAfaAZFKaHJJx_BvnIeakS9vT0A
+token: imooc
+
+
+### springboot admin
+GET http://www.commerce.com/commerce-admin
+
