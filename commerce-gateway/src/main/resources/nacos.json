@@ -8,11 +8,13 @@
     "predicates": [
       {
         "args": {
+          "解释": "imooc 是 gateway 的上下文路径，向后面 commerce-nacos-client 实现转发",
           "pattern": "/imooc/commerce-nacos-client/**"
         },
         "name": "Path"
       }
     ],
+    "解释": "转发到哪一个微服务，lb: 本地的注册中心，serviceId = commerce-nacos-client",
     "uri": "lb://commerce-nacos-client",
     "filters": [
       {
@@ -21,6 +23,7 @@
       {
         "name": "StripPrefix",
         "args": {
+          "解释": "跳过第一个部分的前缀 (imooc)，删除掉",
           "parts": "1"
         }
       }

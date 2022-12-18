@@ -1,0 +1,1 @@
+[{"clusterMode":false,"controlBehavior":2,"count":6.0,"grade":1,"limitApp":"default","maxQueueingTimeMs":500,"resource":"query","strategy":0,"warmUpPeriodSec":10}]

@@ -21,36 +21,40 @@ spring:
         port: 8720
         dashboard: 127.0.0.1:7777
       # 使用 naocs 配置
-      datasource:
-        ds1:
-          nacos:
-            server-addr: ${spring.cloud.nacos.discovery.server-addr}
-            namespace: ${spring.cloud.nacos.discovery.namespace}
-            data-id: gateway-flow-rule-sentinel
-            group-id: DEFAULT_GROUP
-            data-type: json
-            rule-type: gw-flow
-        ds2:
-          nacos:
-            server-addr: ${spring.cloud.nacos.discovery.server-addr}
-            namespace: ${spring.cloud.nacos.discovery.namespace}
-            data-id: gateway-flow-rule-api-sentinel
-            group-id: DEFAULT_GROUP
-            data-type: json
-            rule-type: gw-api-group
+#      datasource:
+#        ds1:
+#          nacos:
+#            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+#            namespace: ${spring.cloud.nacos.discovery.namespace}
+#            data-id: gateway-flow-rule-sentinel
+#            group-id: DEFAULT_GROUP
+#            data-type: json
+#            rule-type: gw-flow
+#        ds2:
+#          nacos:
+#            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+#            namespace: ${spring.cloud.nacos.discovery.namespace}
+#            data-id: gateway-flow-rule-api-sentinel
+#            group-id: DEFAULT_GROUP
+#            data-type: json
+#            rule-type: gw-api-group
 
 #      使用文件配置
-#      datasource:
-#        # 基于本地文件配置基于服务级别的配置
-#        ds1.file:
-#          file: classpath:gateway-flow-rule-sentinel.json
-#          # 限流级别 (服务)
-#          ruleType: gw-flow
-#        # 配置对更细粒度的 api 的配置
-#        ds2.file:
-#          file: classpath:gateway-flow-rule-api-sentinel.json
-#          # api 分组
-#          ruleType: gw-api-group
+      datasource:
+        # 基于本地文件配置基于服务级别的配置
+        ds1:
+          file:
+            file: classpath:gateway-flow-rule-sentinel.json
+            # 限流级别 (服务)
+            ruleType: gw-flow
+            data-type: json
+        # 配置对更细粒度的 api 的配置
+        ds2:
+          file:
+            file: classpath:gateway-flow-rule-api-sentinel.json
+            # api 分组
+            ruleType: gw-api-group
+            data-type: json
 
     # 静态路由
   #    gateway:

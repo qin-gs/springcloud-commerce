@@ -1,4 +1,4 @@
-package com.example.commerce.service.communication.hystrix;
+package com.example.commerce.service.hystrix;
 
 import com.example.commerce.service.communication.AuthorityFeignClient;
 import com.example.commerce.vo.JwtToken;

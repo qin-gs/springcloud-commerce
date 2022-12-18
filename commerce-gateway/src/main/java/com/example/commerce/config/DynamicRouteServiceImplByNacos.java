@@ -22,8 +22,8 @@ import java.util.concurrent.Executor;
  * 通过 nacos 下发的动态路由配置，监听 nacos 中的配置变更，并实时更新到 DynamicRouteServiceImpl 中
  */
 @Slf4j
-@Service
-@DependsOn("gatewayConfig")
+// @Service
+// @DependsOn("gatewayConfig")
 public class DynamicRouteServiceImplByNacos {
 
     public static final ObjectMapper MAPPER = new ObjectMapper();
